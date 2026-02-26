@@ -1,0 +1,26 @@
+.Burgerline
+{
+	width:3dvh;
+	height:0.5dvh;
+	background-color:black;
+	margin-top:0.5dvh;
+	
+	
+	cursor: pointer;
+}
+.Burgerline:first-child
+{
+	margin:0;
+}
+.Burger:hover .Burgerline {
+  transform: rotate(1deg);
+  height: 0.6dvh;
+}
+.Burger
+{
+	cursor: pointer;
+	position:absolute;
+	left:5vh;
+	top:5vh;
+	transition:all 100ms ease;
+}

@@ -1,4 +1,5 @@
 import style from "./SideBar.module.css";
+import Burger from "../Burger-icon/Burger.js";
 import { useState } from "react";
 function SideBar({className}) {
 	
@@ -8,7 +9,7 @@ const changeState = () => {
 };
   return (
 	<>
-<button onClick={changeState}>test</button>
+		<Burger DoAfterClick={changeState}/>
 		<div className={`${className} ${ShowPanel  ? style.sideBarLocal : style.sideBarLocalDezactive }`} >
 
 		</div>
