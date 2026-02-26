@@ -6,7 +6,7 @@ import style from './main.module.css';
 
 function App() {
   return (
-		<div>
+		<div className={style.MainDiv}>
 			<SideBar className={style.SideBar}/>
 			<Chat className={style.Chat}/>
 		</div>

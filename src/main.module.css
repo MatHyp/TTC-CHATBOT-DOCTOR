@@ -1,14 +1,23 @@
 .SideBar
 {
 	
-	width:20%;
-	height:100%;
-	display:inline-block;
+	
+	height:100dvh;
+	background-color:red;
+	
+	
 	
 }
 .Chat
 {
-	display:inline-block;
-	width:70%;
+	
+	flex:1;
+	
+}
+.MainDiv
+{
+	
+	display:flex;
+	 flex-direction: row;
 	
 }
