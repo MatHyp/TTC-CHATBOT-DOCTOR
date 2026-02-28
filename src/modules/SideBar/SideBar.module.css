@@ -2,7 +2,7 @@
 
 .sideBarLocal {
  
-  width: 20%;
+  width: max(20%,35vh);
   transition: width 300ms ease-out;
   background-color: red;
   height: 100%;
@@ -17,12 +17,11 @@ transition: width 300ms ease-out;
 .MenuItem
 {
   list-style-type: none;
-  display:block;
+  display:flex;
   background-color:#364bcb;
   margin-left:0;
-  margin: 0;             /* usuwa margines zewnętrzny */
-  padding: 10%;   
-	
+  margin: 0;             /* usuwa margines zewnętrzny */ 
+  text-decoration:none;
   border-top:2px dotted black;
   text-align:center;
   font-size:2em;
@@ -37,6 +36,10 @@ ul
  margin:0;
  padding:0;
 }
+ul li 
+{
+	cursor:pointer;
+}
 .MenuItem:first-child
 {
 	border-top:0px dotted black;
@@ -48,6 +51,7 @@ ul
 	justify-content: space-between;
 	height:10dvh;
 	align-items: center;
+	
 }
 h1
 {
@@ -61,23 +65,49 @@ h1
 }
 .MenuItemActive
 {
-
-	  list-style-type: none;
-  display:block;
-  background-color:#586EFE;
+  list-style-type: none;
+  background-color:#364bcb;
   margin-left:0;
-  margin: 0;            
-  padding: 10%;   
+  margin: 0;             /* usuwa margines zewnętrzny */
 	
-  border-top:2px dotted black;
   text-align:center;
-  font-size:2em;
 }
-.MenuItemActiveDezactivate
+.MenuLink
 {
+	text-decoration:none;
+	color:black;
+	flex-grow:1;
+	padding:10%;
+	
+	
+	
+}
+.MenuLink:visited
+{
+	text-decoration:none;
+	color:black;
 	
 	
 	
 	
 }
 
+.ItemDisplayNone
+{
+	display:none;
+}
+.BurgerMenu
+{
+	position:absolute;
+	left: max(5%,10vh);
+	top:5%;
+	
+	
+}
+.BurgerAbsolute
+{
+	position:absolute;
+	left: max(22%,37vh);
+	top:5%;
+	
+}

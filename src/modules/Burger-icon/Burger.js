@@ -1,19 +1,16 @@
+
 import style from "./Burger.module.css";
-import { useState } from "react";
-function Burger({DoAfterClick}) {
-	
-	const [BurgerCliked, setBurgerCliked] = useState(false);
-const DoAfterClickLocal=()=>
-{
-	setBurgerCliked(!BurgerCliked);
-	DoAfterClick();
-};
+
+function Burger({ DoAfterClick, showBurger ,classCSS }) {
   return (
-	<div className={`${style.Burger} ${BurgerCliked && style.BurgerCliked}`}onClick={DoAfterClickLocal}>
-		<div className={style.Burgerline}></div>
-		<div className={style.Burgerline}></div>
-		<div className={style.Burgerline}></div>
-	</div>
+    <div
+      className={`${style.Burger} ${showBurger && style.ItemDisplayNone} ${classCSS}`}
+      onClick={DoAfterClick}
+    >
+      <div className={style.Burgerline}></div>
+      <div className={style.Burgerline}></div>
+      <div className={style.Burgerline}></div>
+    </div>
   );
 }
 
