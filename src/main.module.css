@@ -3,7 +3,6 @@
 	
 	
 	height:100dvh;
-	background-color:red;
 	
 	
 	
@@ -11,13 +10,37 @@
 .Chat
 {
 	
-	flex:1;
+	flex-grow:1;
 	
 }
 .MainDiv
 {
 	
 	display:flex;
-	 flex-direction: row;
+	flex-direction: row;
+	
+}
+.API
+{
+	background-color:#696969;
+	flex-grow:1;
+	
+}
+.Login
+{
+	background-color:#696969;
+	flex-grow:1;
+
+	
+}
+.API h1
+{
+  margin-top:500px;
+	
+}
+.Login h1
+{
+	margin-top:500px;
+
 	
 }

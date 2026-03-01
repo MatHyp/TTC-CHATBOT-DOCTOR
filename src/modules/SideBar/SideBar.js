@@ -1,5 +1,6 @@
 import style from "./SideBar.module.css";
 import Burger from "../Burger-icon/Burger.js";
+import HealthIcon from "../ServerHealth-Icon/HealthIcon.js";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 function SideBar({className}) {
@@ -8,9 +9,10 @@ function SideBar({className}) {
   let showInsideBurger
 	showTopBurger = showPanel
 	showInsideBurger = !showPanel
-
+   
 	const changeState = () => {
 	  setShowPanel(prev => !prev);
+	   console.log(showPanel)
 	};
 	
 	
@@ -45,14 +47,15 @@ function SideBar({className}) {
 
 						  <li className={style.MenuItem}>
 							<NavLink 
-							  to="/api-info" 
+							  to="/API" 
 							  className={({ isActive }) => `${style.MenuLink} ${isActive ? style.MenuItemActive : ""}`}
 							  inert={!showPanel}>
 							  Api Info
 							</NavLink>
 						  </li>
 						</ul>
-					
+						<div className={`${!showPanel ? style.DisplayNone : ""} `}>
+					<HealthIcon /></div>
 				</div>
 		  </>);
 }

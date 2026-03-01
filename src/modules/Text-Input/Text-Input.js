@@ -30,7 +30,7 @@ function TextInput(props) {
           onChange={handleChangeSearch}
           value={searchText}
         />
-		<button onClick={handleSend}className={style.SendPrompt}><i class="icon-paper-plane"></i></button>
+		<button onClick={handleSend}className={style.SendPrompt}><i className="icon-paper-plane"></i></button>
 			
 			</form>
 		

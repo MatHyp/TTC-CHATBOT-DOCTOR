@@ -1,7 +1,7 @@
 import InputText from "./../../modules/Text-Input/Text-Input.js";
 import style from "./chat.module.css";
 import {UserMes , AiMes} from "../../modules/Messages/Messages";
-import { useState } from "react";
+import { useState, useId} from "react";
 function Chat({className}) {
 const [messages, setMessages] = useState([
   {
@@ -16,7 +16,7 @@ const [messages, setMessages] = useState([
   }
 ]);
 const sortedMessages = [...messages].sort((a, b) => a.date - b.date);	
-	
+const id = useId()
 const SendMess = (text) => {
   if (!text.trim()) return; // ignoruj puste wiadomości
 
@@ -31,12 +31,12 @@ const SendMess = (text) => {
 };
   return (
     <div className={className}>
-      <div className={style.chatBox}>
+      <div  className={style.chatBox}>
 		  {/*Wyswietla Prompty i odpowiedzi z messages(6 linijka obecnie)*/}
 		{sortedMessages.map((msg, index) => (
 		  <> 
-			<UserMes key={`user-${index}`} Text={msg.userText} />
-			{msg.aiResponse && <AiMes key={`ai-${index}`} Text={msg.aiResponse} />}
+			<UserMes key={id} Text={msg.userText} />
+			{msg.aiResponse && <AiMes kkey={id} Text={msg.aiResponse} />}
 		  </>
 		))}
       </div>
