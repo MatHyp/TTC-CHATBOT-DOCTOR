@@ -1,0 +1,50 @@
+.Smes
+{
+
+	
+	margin-left:auto;
+	background-color:red;
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+	
+	
+}
+p
+{
+	margin:0;
+}
+.Rmes
+{
+
+	
+	margin-right:auto;
+	background-color:blue;
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+	
+	
+}
+.mes
+{
+	
+	width:min(80%,80vh);
+	border-radius:2rem;
+	padding:min(5vh,5%);
+	font-size: clamp(1rem, calc(1vh + 1rem), 3rem);
+	
+	
+}
+.mes:first-child
+{
+	
+margin-top:50px;
+	
+	
+}
+.mes:last-child
+{
+	
+margin-bottom:50px;
+	
+	
+}

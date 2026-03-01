@@ -1,4 +1,4 @@
-input
+.textInput
 {
 	width:90%;
 	margin-left:auto;
@@ -10,11 +10,25 @@ input
 	font-size:20px;
 	color:#FeFeFe;
 	padding:0px 10px 0px 10px;
+	anchor-name:--text-Input;
 	
 }
-input::placeholder
+.textInput::placeholder
 {
 	color:#F9F9F9;
 	text-align:center;
 	
+}
+.SendPrompt
+{
+	position:absolute;
+	position-anchor:--text-Input;
+	right: anchor(right);
+	top: anchor(center);
+	transform: translateY(-50%) translateX(-5%);
+	opacity:0.8;
+	height:50px;
+	width:50px;
+	padding:0;
+	border-radius:30px
 }

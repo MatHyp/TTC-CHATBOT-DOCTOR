@@ -2,7 +2,7 @@
 
 import style from "./Text-Input.module.css";
 import { useState } from "react";
-function TextInput() {
+function TextInput(props) {
 	
   const [searchText, setSearchText] = useState("");
 	
@@ -18,13 +18,14 @@ function TextInput() {
 		<div>
 			<form>
 					
-        <input
+        <input className={style.textInput}
         
           type="text"
           placeholder="Search"
           onChange={handleChangeSearch}
           value={searchText}
         />
+		<button onClick={props.SendPrompt}className={style.SendPrompt}><i class="icon-paper-plane"></i></button>
 			
 			</form>
 		

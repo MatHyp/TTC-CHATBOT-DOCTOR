@@ -1,7 +1,7 @@
 
 
 
-import Chat from './Chat';
+import Chat from './Pages/Chat/Chat';
 import SideBar from './modules/SideBar/SideBar';
 import { Routes, Route } from 'react-router-dom';
 import style from './main.module.css';
