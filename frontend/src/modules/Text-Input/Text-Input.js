@@ -35,7 +35,7 @@ const handleKeyDown = (e) => {
 			  onChange={handleChangeSearch}
 			  onKeyDown={handleKeyDown}  // must be here
 			/>
-		<button type="button" onKeyDown={handleKeyDown} onClick={handleSend}className={style.SendPrompt}><i className="icon-paper-plane"></i></button>
+			<button type="button" onKeyDown={handleKeyDown} onClick={handleSend}className={style.SendPrompt}><i className="icon-paper-plane"></i></button>
 			
 			</form>
 		

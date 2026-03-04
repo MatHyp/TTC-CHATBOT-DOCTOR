@@ -2,7 +2,7 @@
 
 .sideBarLocal {
  
-	width: clamp(200px, 25vw, 400px);
+	width: clamp(200px, 20vw, 400px);
   transition: width 300ms ease-out;
   background-color:var(--secondary-color);
   height: 100%;
@@ -107,7 +107,7 @@ ul li
 .BurgerAbsolute
 {
 	position:absolute;
-	left: max(25%,37vh);
+	left: max(22%,37vh);
 	top:5%;
 	
 }

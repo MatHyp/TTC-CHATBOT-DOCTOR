@@ -61,10 +61,10 @@ const SendMess = async (text) => {
       <div  className={style.chatBox}>
 		  {/*Wyswietla Prompty i odpowiedzi z messages(6 linijka obecnie)*/}
 		{sortedMessages.map((msg, index) => (
-		  <> 
+		  <div className={style.test}> 
 			<UserMes mesDate={msg.date} key={id} Text={msg.userText} AiText={msg.aiResponse} />
 			{msg.aiResponse && <AiMes kkey={id}  Text={msg.aiResponse} />}
-		  </>
+		  </div>
 		))}
       </div>
 
