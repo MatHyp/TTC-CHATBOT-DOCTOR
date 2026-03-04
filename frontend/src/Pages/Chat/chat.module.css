@@ -10,7 +10,6 @@
 	flex-direction:column;
 	gap:5vh;
 	height:84dvh;
-	background-color:var(--primary-color);
 	margin-bottom:1dvh;
 	overflow-y: auto;  
 	padding:0 5vh 0 5vh;

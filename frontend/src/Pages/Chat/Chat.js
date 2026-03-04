@@ -62,7 +62,7 @@ const SendMess = async (text) => {
 		  {/*Wyswietla Prompty i odpowiedzi z messages(6 linijka obecnie)*/}
 		{sortedMessages.map((msg, index) => (
 		  <> 
-			<UserMes mesDate={msg.date} key={id} Text={msg.userText} />
+			<UserMes mesDate={msg.date} key={id} Text={msg.userText} AiText={msg.aiResponse} />
 			{msg.aiResponse && <AiMes kkey={id}  Text={msg.aiResponse} />}
 		  </>
 		))}

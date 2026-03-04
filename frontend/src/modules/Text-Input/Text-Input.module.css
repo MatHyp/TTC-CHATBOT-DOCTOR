@@ -1,24 +1,67 @@
 .textInput
 {
+	--font-size:20px;
 	width:90%;
 	margin-left:auto;
 	margin-right:auto;
 	color:gray;
 	background-color:var(--action-color);
 	border-radius:30px;
-	height:50px;
-	font-size:20px;
+	min-height:50px;
+	max-height: calc(var(--font-size) * 6);
+	font-size:var(--font-size);
 	color:#FeFeFe;
 	padding:0px 10px 0px 10px;
 	anchor-name:--text-Input;
+	field-sizing:content;
+	resize: none;
 	
+}
+.textInput::-webkit-scrollbar
+{
+	background-color:var(--primary-color);
+}
+
+/* width */
+.textInput::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+.textInput::-webkit-scrollbar-track {
+  background: var(--primary-color);;
+}
+
+/* Handle */
+.textInput::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius:2vh; 	
+}
+
+/* Handle on hover */
+.textInput::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
 .textInput::placeholder
 {
 	color:#F9F9F9;
 	text-align:center;
+	font-size:var(--font-size);
+
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 .SendPrompt
 {
 	position:absolute;

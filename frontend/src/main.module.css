@@ -58,4 +58,7 @@ body
   --color-chat-ai:white;
   --color-chat-user:white;
   --color-chat-prompt:white;
+  --wait-animation-color:black;
+  --wait-animation-color2:white;
+   interpolate-size: allow-keywords;
 }

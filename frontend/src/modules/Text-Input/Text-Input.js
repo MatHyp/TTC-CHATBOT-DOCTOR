@@ -10,27 +10,32 @@ function TextInput(props) {
   const handleChangeSearch = (e) => {
 		setSearchText(e.target.value);
   };
-	
-  const handleSend = (e) => {
-    e.preventDefault(); // blokuje submit
-    if (!searchText.trim()) return;
-    props.SendPrompt(searchText); // wywołanie funkcji w Chat.js
-    setSearchText("");            // czyszczenie inputa
-  };
-	
+  
+const handleSend = () => {
+  if (!searchText.trim()) return;
+  props.SendPrompt(searchText);
+  setSearchText("");
+};
+const handleKeyDown = (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault(); // prevent newline
+    handleSend();       // use state directly
+  }
+};
 	
   return (
 		<div>
 			<form>
 					
-        <input className={style.textInput}
-        
-          type="text"
-          placeholder="Search"
-          onChange={handleChangeSearch}
-          value={searchText}
-        />
-		<button onClick={handleSend}className={style.SendPrompt}><i className="icon-paper-plane"></i></button>
+			<textarea
+			  className={style.textInput}
+			  id="UserInput"
+			  placeholder="Search"
+			  value={searchText}
+			  onChange={handleChangeSearch}
+			  onKeyDown={handleKeyDown}  // must be here
+			/>
+		<button onKeyDown={handleKeyDown} onClick={handleSend}className={style.SendPrompt}><i className="icon-paper-plane"></i></button>
 			
 			</form>
 		
