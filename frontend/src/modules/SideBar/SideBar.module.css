@@ -65,7 +65,7 @@ ul li
 	width:auto;
 	margin:0;
 	flex:1;
-	font-size: clamp(2rem, -1.857rem + 5.714vw, 5rem);
+	font-size: clamp(2rem, -1.857rem + 3.714vw, 5rem);
 	
 }
 .MenuItemActive
@@ -107,8 +107,12 @@ ul li
 .BurgerAbsolute
 {
 	position:absolute;
-	left: max(22%,37vh);
-	top:5%;
+	left:anchor(right);
+	top:calc(anchor(top) + 5vh);
+	position-anchor:--sideBar-anchor;
+	translate:90% 
+	
+	
 	
 }
 .DisplayNone

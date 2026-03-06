@@ -69,7 +69,7 @@ const SendMess = async (text) => {
       </div>
 
       <div className={style.promptInput} >
-        <InputText SendPrompt={SendMess} />
+        <InputText SendPrompt={SendMess} EnableSend={messages[messages.length - 1]?.aiResponse=="" ?  false : true} />
       </div>
     </div>
   );

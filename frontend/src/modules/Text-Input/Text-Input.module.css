@@ -2,6 +2,8 @@
 {
 	--font-size:20px;
 	width:90%;
+	max-width:90%;
+	word-break: break-word;
 	margin-left:auto;
 	margin-right:auto;
 	color:gray;
@@ -15,16 +17,24 @@
 	anchor-name:--text-Input;
 	field-sizing:content;
 	resize: none;
-	
+	padding-right:55px;
+	  box-sizing: border-box;
+	  padding-left:20px;
+  padding-top: calc((70px - 1em) / 2);
+  padding-bottom: calc((70px - 1em) / 2);
+   line-height: 1.3;
+
 }
 .textInput::-webkit-scrollbar
 {
 	background-color:var(--primary-color);
+	margin-right:100px
 }
 
 /* width */
 .textInput::-webkit-scrollbar {
   width: 0px;
+  
 }
 
 /* Track */
@@ -60,7 +70,11 @@
 
 
 
-
+.SendPrompt:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 .SendPrompt
 {
@@ -75,6 +89,7 @@
 	padding:0;
 	border-radius:30px;
 	transition: all 100ms ease-in-out;
+	
 }
 .SendPrompt:hover
 {

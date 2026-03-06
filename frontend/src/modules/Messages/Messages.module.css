@@ -38,6 +38,10 @@ p
 	
 	
 }
+.mes p {/*YEY*/
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}/*stupid breaking page without this*/
 .WFRespond
 {
 	

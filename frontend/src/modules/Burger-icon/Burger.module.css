@@ -21,7 +21,7 @@
 	cursor: pointer;
 	position:absolute;
 	z-index:100;
-	transition:all 200ms ease-in-out;
+	transition:background-color 200ms ease-in-out;
 }
 .ItemDisplayNone
 {
