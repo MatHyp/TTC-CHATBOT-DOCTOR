@@ -5,15 +5,18 @@ from typing import List, Dict, Optional
 import hashlib
 import chromadb
 from chromadb.config import Settings
-import ollama
+from sentence_transformers import SentenceTransformer
+# import ollamapip
 
-EMBED_MODEL      = "nomic-embed-text"     # model do embeddingów
+
+EMBED_MODEL      = "all-MiniLM-L6-v2"     # model do embeddingów
 CHROMA_PATH      = "./chroma_db"          # lokalna baza wektorowa
 COLLECTION_NAME  = "knowledge_base"
 CHUNK_SIZE       = 500                    # znaki na chunk
 CHUNK_OVERLAP    = 50
 TOP_K            = 5                      # ile fragmentów pobierać
 
+model = SentenceTransformer(EMBED_MODEL)
 
 def chunk_text(text: str, source: str) -> List[Dict]:
     """Dzieli tekst na nakładające się fragmenty."""
@@ -75,13 +78,9 @@ def add_documents(chunks: List[Dict]):
     )
     print(f"  ✔  Dodano {len(new_chunks)} fragmentów do bazy.")
 
-def embed(texts: List[str]) -> List[List[float]]:
-    vectors = []
-    for text in texts:
-        resp = ollama.embeddings(model=EMBED_MODEL, prompt=text)
-        vectors.append(resp["embedding"])
-    return vectors
 
+def embed(texts: List[str]) -> List[List[float]]:
+    return model.encode(texts).tolist()
 
 def load_text(path: str):
     path = Path(path)
