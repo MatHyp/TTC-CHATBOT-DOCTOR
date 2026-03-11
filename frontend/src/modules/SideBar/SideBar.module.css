@@ -5,10 +5,11 @@
 	width: clamp(200px, 20vw, 400px);
   transition: width 300ms ease-out;
   background-color:var(--secondary-color);
-  height: 100%;
+  height: 100%; 
   flex-shrink: 0;
   anchor-name: --sideBar-anchor;
   z-index:10;
+  overflow:hidden;
   
 }
 
@@ -69,6 +70,7 @@ ul li
 	font-size: clamp(2rem, -1.857rem + 3.714vw, 5rem);
 	
 }
+
 .MenuItemActive
 {
   list-style-type: none;
@@ -126,4 +128,56 @@ ul li
 .MenuItemActive:hover
 {
 	background-color:#555;
+}
+.userChat
+{
+	
+	
+	display:flex;
+	 text-align:center;
+	background-color:var(--secondary-color);
+	border-radius:20%;
+	corner-shape:squircle;          
+	margin:1px 10px;
+	
+}
+.userChat li
+{
+	width:100%;
+	
+}
+.chatsCointainer
+{
+	
+	max-height:60%;
+	gap:1px;
+	
+	display:flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	overflow-y:scroll;
+	border-top:solid 5px var(--primary-color);
+}
+
+.chatsCointainer::-webkit-scrollbar
+{
+	background-color:var(--primary-color);
+	 width: 5px;
+	 
+}
+
+/* Track */
+.chatsCointainer::-webkit-scrollbar-track {
+ background-color:var(--secondary-color);
+}
+
+/* Handle */
+.chatsCointainer::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius:2vh; 	
+}
+
+/* Handle on hover */
+.chatsCointainer::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }

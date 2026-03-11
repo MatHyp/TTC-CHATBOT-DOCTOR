@@ -3,76 +3,103 @@ import style from "./chat.module.css";
 import {UserMes , AiMes} from "../../modules/Messages/Messages";
 import { useState, useEffect, useId } from "react";
 import {AI} from "../../modules/API-Prompt/POST.js"
+import { db } from "../../db.js";
+
+
+
+
 function Chat({className}) {
-const [data, setData] = useState()
-const [loading, setLoading] = useState(true)
-const [messages, setMessages] = useState([]);
+	const [data, setData] = useState()
+	const [loading, setLoading] = useState(true)
+	const [chatId, setChatId] = useState(null);
+	const [messages, setMessages] = useState([]);
+		useEffect(() => {
+		  async function saveChat() {
 
+			if (!messages.length) return;
 
+			// jeśli chat jeszcze nie istnieje
+			if (!chatId) {
+			  const id = await db.chats.add({
+				messages
+			  });
 
- 
-  
-const sortedMessages = [...messages].sort((a, b) => a.date - b.date);	
-const id = useId()
-const SendMess = async (text) => {
-  if (!text.trim()) return;
+			  setChatId(id);
+			}
 
-  const newMessage = {
-    userText: text,
-    aiResponse: "",
-    date: Date.now()
-  };
+			// jeśli chat już istnieje → update
+			else {
+			  await db.chats.update(chatId, {
+				messages
+			  });
+			}
+		  }
 
-  // najpierw dodaj wiadomość użytkownika
-  setMessages(function(prevMessages) {
-    return [...prevMessages, newMessage];
-  });
+		  saveChat();
 
-  try {
-    setLoading(true);
+		}, [messages]);
 
-    const result = await AI(text);
+	const sortedMessages = [...messages].sort((a, b) => a.date - b.date);	
+	const id = useId()
+	const SendMess = async (text) => {
+	  if (!text.trim()) return;
 
-    // teraz ustaw odpowiedź AI do OSTATNIEJ wiadomości
-	
-	
-	setMessages(function(prevMessages) {
-	  var newMessages = [...prevMessages];
-	  var lastIndex = newMessages.length - 1;
-	  newMessages[lastIndex] = {
-		...newMessages[lastIndex],
-		aiResponse: result.response
+	  const newMessage = {
+		userText: text,
+		aiResponse: "",
+		date: Date.now()
 	  };
-	  return newMessages;
-	});
-	
-	
 
-  } catch (err) {
-    console.log(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+	  // najpierw dodaj wiadomość użytkownika
+	  setMessages(function(prevMessages) {
+		return [...prevMessages, newMessage];
+	  });
+
+	  try {
+		setLoading(true);
+
+		const result = await AI(text);
+
+		// teraz ustaw odpowiedź AI do OSTATNIEJ wiadomości
+		
+		
+		setMessages(function(prevMessages) {
+		  var newMessages = [...prevMessages];
+		  var lastIndex = newMessages.length - 1;
+		  newMessages[lastIndex] = {
+			...newMessages[lastIndex],
+			aiResponse: result.response
+		  };
+		  return newMessages;
+		});
+		
+		
+
+	  } catch (err) {
+		console.log(err.message);
+	  } finally {
+		setLoading(false);
+	  }
+	};
 
 
-  return (
-    <div className={className}>
-      <div  className={style.chatBox}>
-		  {/*Wyswietla Prompty i odpowiedzi z messages(6 linijka obecnie)*/}
-		{sortedMessages.map((msg, index) => (
-		  <div className={style.test}> 
-			<UserMes mesDate={msg.date} key={id} Text={msg.userText} AiText={msg.aiResponse} />
-			{msg.aiResponse && <AiMes kkey={id}  Text={msg.aiResponse} />}
+	  return (
+		<div className={className}>
+		  <div  className={style.chatBox}>
+			  {/*Wyswietla Prompty i odpowiedzi z messages(6 linijka obecnie)*/}
+			{sortedMessages.map((msg, index) => (
+			  <div className={style.test}> 
+				<UserMes mesDate={msg.date} key={id} Text={msg.userText} AiText={msg.aiResponse} />
+				{msg.aiResponse && <AiMes kkey={id}  Text={msg.aiResponse} />}
+			  </div>
+			))}
 		  </div>
-		))}
-      </div>
 
-      <div className={style.promptInput} >
-        <InputText SendPrompt={SendMess} EnableSend={messages[messages.length - 1]?.aiResponse=="" ?  false : true} />
-      </div>
-    </div>
-  );
-}
+		  <div className={style.promptInput} >
+			<InputText SendPrompt={SendMess} EnableSend={messages[messages.length - 1]?.aiResponse=="" ?  false : true} />
+		  </div>
+		</div>
+	  );
+	}
 
 export default Chat;

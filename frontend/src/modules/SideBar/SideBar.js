@@ -2,16 +2,19 @@ import style from "./SideBar.module.css";
 import Burger from "../Burger-icon/Burger.js";
 import HealthIcon from "../ServerHealth-Icon/HealthIcon.js";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "../../db.js";
+import { useLiveQuery } from "dexie-react-hooks";
 function SideBar({className}) {
   const [showPanel, setShowPanel] = useState(true);
+ const chats = useLiveQuery(() => db.chats.toArray(), []) || [];
    
 	const changeState = () => {
 	  setShowPanel(prev => !prev);
 	   console.log(showPanel)
 	};
 	
-	
+
 	
 	
 		  return (
@@ -28,28 +31,26 @@ function SideBar({className}) {
 							  to="/" 
 							  className={({ isActive }) =>`${style.MenuLink} ${isActive ? style.MenuItemActive : ""}`}
 							  inert={!showPanel}>
-							  Home
+							  New Chat
 							</NavLink>
 						  </li>
-
+							
 						  <li className={style.MenuItem}>
-							<NavLink 
-							  to="/login" 
-							  className={({ isActive }) => `${style.MenuLink} ${isActive ? style.MenuItemActive : ""}`}
-							  inert={!showPanel}>
-							  Login
-							</NavLink>
+						  
 						  </li>
-
-						  <li className={style.MenuItem}>
-							<NavLink 
-							  to="/API" 
-							  className={({ isActive }) => `${style.MenuLink} ${isActive ? style.MenuItemActive : ""}`}
-							  inert={!showPanel}>
-							  Api Info
-							</NavLink>
-						  </li>
+		
 						</ul>
+										  <div className={style.chatsCointainer}>
+						  
+							{chats.slice().reverse().map((chat, index) => (
+									<NavLink to="/" className={({ isActive }) =>`${style.MenuLink} ${isActive ? style.MenuItemActive : ""} ${style.userChat}`} inert={!showPanel}>
+										<li key={index}>
+											{chat.messages[0].userText}
+										</li>
+								  
+									</NavLink>
+							))}
+							</div>
 						<div className={`${!showPanel ? style.DisplayNone : ""} `}>
 					<HealthIcon /></div>
 				</div>
